@@ -164,7 +164,7 @@
 &trans         &trans         &trans      &trans             &trans          &trans          &trans             &kp LC(LG(LA(J)))  &trans      &trans      &trans          &trans
 &trans         &trans         &trans      &kp LC(LG(LA(C)))  &trans          &trans          &kp LC(LG(LA(N)))  &trans             &trans      &trans      &trans          &trans
                                           &trans             &trans          &trans          &trans             &trans
-                                                             &trans          &trans          &trans
+                                                             &trans          &to 0           &trans
             >;
         };
 
@@ -186,7 +186,7 @@
 &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
                         &trans  &trans  &trans    &trans  &trans
-                                &trans  &trans    &trans
+                                &trans  &to 0     &trans
             >;
         };
 
@@ -197,7 +197,7 @@
 &trans  &trans  &trans  &trans  &trans  &trans    &mkp LCLK  &mkp RCLK  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans    &trans     &trans     &trans  &trans  &trans  &trans
                         &trans  &trans  &trans    &mkp LCLK  &mkp RCLK
-                                &trans  &trans    &trans
+                                &trans  &to 0     &trans
             >;
         };
     };
