@@ -11,65 +11,171 @@
 };
 
 / {
+    scroll_encoder: scroll_encoder {
+        compatible = "zmk,behavior-sensor-rotate";
+        #sensor-binding-cells = <0>;
+        bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
+
+        tap-ms = <100>;
+    };
+
     macros {
-        To1_macro: To1_macro {
+        leader: snippet_leader {
             compatible = "zmk,behavior-macro";
-            label = "To1_macro";
             #binding-cells = <0>;
-            bindings = <&rgb_ug RGB_EFF &rgb_ug RGB_COLOR_HSB(128,100,50) &to 1>;
+            tap-ms = <1>;
+            wait-ms = <1>;
+            bindings = <&macro_tap &kp LC(LG(LA(SPACE))) &kp LC(LG(LS(RBKT)))>;
+        };
+        leader_alt: snippet_leader_alternative {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            tap-ms = <1>;
+            wait-ms = <1>;
+            bindings = <&macro_tap &kp LC(LG(LA(SPACE))) &kp LC(LG(LS(LA(RBKT))))>;
+        };
+    };
+
+    combos {
+        compatible = "zmk,combos";
+        combo_enter {
+            timeout-ms = <200>;
+            key-positions = <56 60>;
+            bindings = <&kp ENTER>;
+        };
+        combo_leader_alternative {
+            timeout-ms = <200>;
+            key-positions = <57 59>;
+            bindings = <&leader_alt>;
+        };
+        combo_vivaldi {
+            timeout-ms = <150>;
+            key-positions = <62 63>;
+            bindings = <&kp LG(LALT)>;
+        };
+        combo_left_rectangle {
+            timeout-ms = <150>;
+            key-positions = <53 54>;
+            bindings = <&kp LC(LALT)>;
+        };
+        combo_lbkt {
+            timeout-ms = <150>;
+            key-positions = <9 10>;
+            bindings = <&kp LBKT>;
+        };
+        combo_win {
+            timeout-ms = <150>;
+            key-positions = <53 63>;
+            bindings = <&tog_on 2>;
+            layers = <0>;
+        };
+        combo_mac {
+            timeout-ms = <150>;
+            key-positions = <53 63>;
+            bindings = <&tog_off 2>;
+            layers = <2>;
+        };
+    };
+
+    behaviors {
+        as: auto_shift {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping_term_ms = <275>;
+            quick_tap_ms = <0>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
         };
 
-        To0_macro: To0_macro {
-            compatible = "zmk,behavior-macro";
-            label = "To0_macro";
-            #binding-cells = <0>;
-            bindings = <&rgb_ug RGB_EFR &to 0>;
+        mta: mod_tap_alternative {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping_term_ms = <250>;
+            quick_tap_ms = <0>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
         };
 
-        To2_macro: To2_macro {
-            compatible = "zmk,behavior-macro";
-            label = "To2_macro";
+        lts: layer_tap_sticky {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&kp>, <&slq>;
+            display-name = "Layer-Tap";
+        };
+
+        slq: sticky_layer_non_quick_release {
+            compatible = "zmk,behavior-sticky-key";
+            #binding-cells = <1>;
+            bindings = <&mo>;
+            release-after-ms = <1000>;
+            ignore-modifiers;
+          };
+
+        gtesc: grave_tilde_escape {
+            compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings =
-                <&to 2>,
-                <&macro_wait_time 30>,
-                <&rgb_ug RGB_COLOR_HSB(250,100,50)>;
+            bindings = <&kp ESC>, <&kp GRAVE>;
+            mods = <(MOD_LGUI|MOD_LALT|MOD_LSFT|MOD_RGUI|MOD_RALT|MOD_RSFT)>;
+            keep-mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        bspc_del: backspace_delete {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp BACKSPACE>, <&kp DELETE>;
+            mods = <(MOD_LALT|MOD_LSFT|MOD_RALT|MOD_RSFT)>;
+        };
+
+        tog_on: toggle_layer_on_only {
+            compatible = "zmk,behavior-toggle-layer";
+            #binding-cells = <1>;
+            display-name = "Toggle Layer On";
+            toggle-mode = "on";
+        };
+
+        tog_off: toggle_layer_off_only {
+            compatible = "zmk,behavior-toggle-layer";
+            #binding-cells = <1>;
+            display-name = "Toggle Layer Off";
+            toggle-mode = "off";
         };
     };
 
     keymap {
         compatible = "zmk,keymap";
 
-        QWERTY {
+        Base {
             bindings = <
-&kp ESC         &kp N1  &kp N2   &kp N3            &kp N4        &kp N5          &kp N6      &kp N7     &kp N8     &kp N9   &kp N0    &kp BACKSPACE
-&kp TAB         &kp Q   &kp W    &kp E             &kp R         &kp T           &kp Y       &kp U      &kp I      &kp O    &kp P     &kp BSLH
-&kp CAPSLOCK    &kp A   &lt 4 S  &kp D             &lt 3 F       &kp G           &kp H       &kp J      &kp K      &kp L    &kp SEMI  &kp SQT
-&kp LEFT_SHIFT  &kp Z   &kp X    &kp C             &kp V         &lt 2 B         &kp N       &kp M      &kp COMMA  &kp DOT  &kp FSLH  &kp RIGHT_SHIFT
-                                 &kp LEFT_CONTROL  &kp SPACE     &mo 1           &kp DELETE  &kp SPACE
-                                                   &kp LEFT_WIN  &kp LEFT_ALT    &kp ENTER
+&gtesc          &kp N1   &kp N2   &kp N3     &kp N4       &kp N5      &kp N6      &kp N7      &kp N8      &kp N9    &kp N0     &kp MINUS
+&kp TAB         &kp Q    &kp W    &kp E      &kp R        &kp T       &kp Y       &kp U       &kp I       &kp O     &kp P      &kp BSLH
+&mta CAPS RALT  &kp A    &kp S    &kp D      &kp F        &kp G       &kp H       &kp J       &kp K       &kp L     &kp SEMI   &kp APOS
+&lts LSFT 2     &kp Z    &kp X    &kp C      &kp V        &kp B       &kp N       &kp M       &kp COMMA   &kp DOT   &kp FSLH   &mt RSHFT ENTER
+                                  &kp space  &lt 4 LGUI   &bspc_del   &leader     &kp SPACE
+                                             &lt 3 LALT   &kp LCTL    &lt 1 RCTL  
             >;
         };
 
-        F_layers {
+        Fn {
             bindings = <
-&kp F1  &kp F2  &kp F3  &kp F4  &kp F5  &kp F6        &kp F7     &kp F8     &kp F9    &kp F10       &kp F11    &kp F12
-&trans  &none   &none   &none   &none   &trans        &none      &none      &none     &kp UP_ARROW  &kp MINUS  &kp EQUAL
-&trans  &none   &none   &none   &none   &trans        &mkp LCLK  &mkp RCLK  &kp LEFT  &kp DOWN      &kp RIGHT  &trans
-&trans  &trans  &trans  &trans  &trans  &none         &none      &none      &trans    &trans        &none      &trans
-                        &trans  &trans  &To0_macro    &mkp LCLK  &mkp RCLK
-                                &trans  &trans        &trans
+&kp C_BRI_DEC  &kp C_BRI_DEC  &kp LC(UP)  &kp LG(SPACE)      &kp LG(LS(N4))  &kp LG(LS(N5))  &kp C_PREV         &kp C_PP           &kp C_NEXT  &kp C_MUTE  &kp C_VOL_DN    &kp C_VOL_UP
+&out OUT_TOG   &bt BT_NXT     &bt BT_CLR  &trans             &trans          &trans          &trans             &trans             &trans      &trans      &trans          &trans
+&trans         &trans         &trans      &trans             &trans          &trans          &trans             &kp LC(LG(LA(J)))  &trans      &trans      &trans          &trans
+&trans         &trans         &trans      &kp LC(LG(LA(C)))  &trans          &trans          &kp LC(LG(LA(N)))  &trans             &trans      &trans      &trans          &trans
+                                          &trans             &trans          &trans          &trans             &trans
+                                                             &trans          &trans          &trans
             >;
         };
 
-        BT_layers {
+        Symbol {
             bindings = <
-&trans  &bt BT_SEL 0    &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &trans      &trans  &trans  &trans  &trans  &trans
-&trans  &trans          &trans        &trans        &trans        &trans          &trans      &trans  &trans  &trans  &trans  &trans
-&trans  &bt BT_CLR_ALL  &trans        &trans        &trans        &trans          &trans      &trans  &trans  &trans  &trans  &trans
-&trans  &trans          &trans        &bt BT_CLR    &trans        &trans          &bt BT_NXT  &trans  &trans  &trans  &trans  &trans
-                                      &trans        &trans        &trans          &trans      &trans
-                                                    &trans        &trans          &trans
+&trans     &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp LBKT  &kp RBKT  &kp EQUAL
+&trans     &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans
+&trans     &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans
+&kp LSHFT  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans
+                           &trans  &trans  &trans  &trans  &trans
+                                   &trans  &trans  &trans
             >;
         };
 
