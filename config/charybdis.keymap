@@ -152,7 +152,7 @@
 &kp TAB         &kp Q    &kp W    &kp E      &kp R        &kp T       &kp Y       &kp U       &kp I       &kp O     &kp P      &kp BSLH
 &mta CAPS RALT  &kp A    &kp S    &kp D      &kp F        &kp G       &kp H       &kp J       &kp K       &kp L     &kp SEMI   &kp APOS
 &lts LSFT 2     &kp Z    &kp X    &kp C      &kp V        &kp B       &kp N       &kp M       &kp COMMA   &kp DOT   &kp FSLH   &mt RSHFT ENTER
-                                  &kp space  &lt 4 LGUI   &bspc_del   &leader     &kp SPACE
+                                  &kp SPACE  &lt 4 LGUI   &bspc_del   &leader     &kp SPACE
                                              &lt 3 LALT   &kp LCTL    &lt 1 RCTL  
             >;
         };
