@@ -42,17 +42,17 @@
         compatible = "zmk,combos";
         combo_enter {
             timeout-ms = <200>;
-            key-positions = <56 60>;
+            key-positions = <48 52>;
             bindings = <&kp ENTER>;
         };
         combo_leader_alternative {
             timeout-ms = <200>;
-            key-positions = <57 59>;
+            key-positions = <51 55>;
             bindings = <&leader_alt>;
         };
         combo_vivaldi {
             timeout-ms = <150>;
-            key-positions = <62 63>;
+            key-positions = <51 52>;
             bindings = <&kp LG(LALT)>;
         };
         combo_left_rectangle {
@@ -64,18 +64,6 @@
             timeout-ms = <150>;
             key-positions = <9 10>;
             bindings = <&kp LBKT>;
-        };
-        combo_win {
-            timeout-ms = <150>;
-            key-positions = <53 63>;
-            bindings = <&tog_on 2>;
-            layers = <0>;
-        };
-        combo_mac {
-            timeout-ms = <150>;
-            key-positions = <53 63>;
-            bindings = <&tog_off 2>;
-            layers = <2>;
         };
     };
 
