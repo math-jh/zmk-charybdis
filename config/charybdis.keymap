@@ -47,17 +47,27 @@
         };
         combo_leader_alternative {
             timeout-ms = <200>;
-            key-positions = <51 55>;
+            key-positions = <54 55>;
             bindings = <&leader_alt>;
         };
-        combo_vivaldi {
+        combo_vivaldi_left {
+            timeout-ms = <150>;
+            key-positions = <49 50>;
+            bindings = <&kp LG(LALT)>;
+        };
+        combo_vivaldi_right {
             timeout-ms = <150>;
             key-positions = <51 52>;
             bindings = <&kp LG(LALT)>;
         };
-        combo_left_rectangle {
+        combo_rectangle_left {
             timeout-ms = <150>;
-            key-positions = <53 54>;
+            key-positions = <49 53>;
+            bindings = <&kp LC(LALT)>;
+        };
+        combo_rectangle_right {
+            timeout-ms = <150>;
+            key-positions = <51 54>;
             bindings = <&kp LC(LALT)>;
         };
         combo_lbkt {
@@ -147,12 +157,12 @@
 
         Base {
             bindings = <
-&gtesc          &kp N1   &kp N2   &kp N3     &kp N4       &kp N5      &kp N6      &kp N7      &kp N8      &kp N9    &kp N0     &kp MINUS
-&kp TAB         &kp Q    &kp W    &kp E      &kp R        &kp T       &kp Y       &kp U       &kp I       &kp O     &kp P      &kp BSLH
-&mta CAPS RALT  &kp A    &kp S    &kp D      &kp F        &kp G       &kp H       &kp J       &kp K       &kp L     &kp SEMI   &kp APOS
-&lts LSFT 2     &kp Z    &kp X    &kp C      &kp V        &kp B       &kp N       &kp M       &kp COMMA   &kp DOT   &kp FSLH   &mt RSHFT ENTER
-                                  &kp SPACE  &lt 4 LGUI   &bspc_del   &leader     &kp SPACE
-                                             &lt 3 LALT   &kp LCTL    &lt 1 RCTL  
+&gtesc          &kp N1   &kp N2   &kp N3     &kp N4  &kp N5     &kp N6   &kp N7      &kp N8      &kp N9    &kp N0     &kp MINUS
+&kp TAB         &kp Q    &kp W    &kp E      &kp R   &kp T      &kp Y    &kp U       &kp I       &kp O     &kp P      &kp BSLH
+&mta CAPS RALT  &kp A    &kp S    &kp D      &kp F   &kp G      &kp H    &kp J       &kp K       &kp L     &kp SEMI   &kp APOS
+&lts LSFT 2     &kp Z    &kp X    &kp C      &kp V   &kp B      &kp N    &kp M       &kp COMMA   &kp DOT   &kp FSLH   &mt RSHFT ENTER
+                                  &kp SPACE  &to 4   &kp LGUI   &mo 1    &kp SPACE
+                                             &to 3   &bspc_del  &leader  
             >;
         };
 
@@ -180,23 +190,23 @@
 
         scroll-layers {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &trans  &trans    &trans  &trans
-                                &trans  &to 0     &trans
+&trans  &trans    &trans    &trans     &trans  &trans    &trans  &trans  &trans     &trans     &trans  &trans
+&trans  &trans    &kp UP    &trans     &trans  &trans    &trans  &trans  &trans     &trans     &trans  &trans
+&trans  &kp LEFT  &kp DOWN  &kp RIGHT  &trans  &trans    &trans  &trans  &trans     &mkp RCLK  &trans  &trans
+&trans  &trans    &trans    &trans     &trans  &trans    &trans  &trans  &mkp LCLK  &trans     &trans  &trans
+                            &trans     &trans  &trans    &trans  &trans
+                                       &trans  &to 0     &trans
             >;
         };
 
         snipe-layers {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans    &trans     &trans     &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans     &trans     &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &mkp LCLK  &mkp RCLK  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans     &trans     &trans  &trans  &trans  &trans
-                        &trans  &trans  &trans    &mkp LCLK  &mkp RCLK
-                                &trans  &to 0     &trans
+&trans  &trans    &trans    &trans     &trans  &trans    &trans  &trans  &trans     &trans     &trans  &trans
+&trans  &trans    &kp UP    &trans     &trans  &trans    &trans  &trans  &trans     &trans     &trans  &trans
+&trans  &kp LEFT  &kp DOWN  &kp RIGHT  &trans  &trans    &trans  &trans  &trans     &mkp RCLK  &trans  &trans
+&trans  &trans    &trans    &trans     &trans  &trans    &trans  &trans  &mkp LCLK  &trans     &trans  &trans
+                            &trans     &trans  &trans    &trans  &trans
+                                       &trans  &to 0     &trans
             >;
         };
     };
