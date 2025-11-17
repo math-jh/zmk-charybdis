@@ -198,7 +198,7 @@
 &trans  &trans    &trans    &trans     &trans  &trans  &trans  &trans  &trans     &trans     &trans  &trans
 &trans  &trans    &kp UP    &trans     &trans  &trans  &trans  &trans  &trans     &trans     &trans  &trans
 &trans  &kp LEFT  &kp DOWN  &kp RIGHT  &trans  &trans  &trans  &trans  &trans     &mkp RCLK  &trans  &trans
-&trans  &trans    &trans    &trans     &trans  &trans  &trans  &trans  &mkp LCLK  &trans     &trans  &to 0
+&trans  &trans    &trans    &trans     &trans  &trans  &trans  &trans  &mkp LCLK  &trans     &trans  &trams
                             &trans     &trans  &trans  &trans  &trans
                                        &trans  &trans  &trans
             >;
@@ -209,7 +209,7 @@
 &trans  &trans    &trans    &trans     &trans  &trans  &trans  &trans  &trans     &trans     &trans     &trans
 &trans  &trans    &kp UP    &trans     &trans  &trans  &trans  &trans  &trans     &trans     &trans     &trans
 &trans  &kp LEFT  &kp DOWN  &kp RIGHT  &trans  &trans  &trans  &trans  &trans     &mkp RCLK  &trans     &trans
-&trans  &trans    &trans    &trans     &trans  &trans  &trans  &trans  &mkp LCLK  &trans     &kp QMARK  &to 0
+&mo 3   &trans    &trans    &trans     &trans  &trans  &trans  &trans  &mkp LCLK  &trans     &kp QMARK  &trans
                             &trans     &trans  &trans  &trans  &trans
                                        &trans  &trans  &trans
             >;
