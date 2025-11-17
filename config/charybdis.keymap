@@ -150,7 +150,7 @@
 &gtesc          &kp N1   &kp N2   &kp N3     &kp N4    &kp N5     &kp N6   &kp N7      &kp N8      &kp N9    &kp N0     &kp MINUS
 &kp TAB         &kp Q    &kp W    &kp E      &kp R     &kp T      &kp Y    &kp U       &kp I       &kp O     &kp P      &kp BSLH
 &mta CAPS RALT  &kp A    &kp S    &kp D      &kp F     &kp G      &kp H    &kp J       &kp K       &kp L     &kp SEMI   &kp APOS
-&lts LSFT 2     &kp Z    &kp X    &kp C      &kp V     &kp B      &kp N    &kp M       &kp COMMA   &kp DOT   &kp FSLH   &lt 4 ENTER
+&lts LSFT 2     &kp Z    &kp X    &kp C      &kp V     &kp B      &kp N    &kp M       &kp COMMA   &kp DOT   &kp FSLH   &lt 3 ENTER
                                   &kp SPACE  &kp LALT  &kp LGUI   &mo 1    &kp SPACE
                                              &kp LCTL  &bspc_del  &leader  
             >;
@@ -174,29 +174,29 @@
 &trans     &kp LEFT  &kp DOWN  &kp RIGHT  &trans  &trans  &trans  &trans  &trans     &mkp RCLK  &trans    &trans
 &kp LSHFT  &trans    &trans    &trans     &trans  &trans  &trans  &trans  &mkp LCLK  &trans     &trans    &trans
                                &trans     &trans  &trans  &trans  &trans
-                                          &trans  &trans  &trans
-            >;
-        };
-
-        scroll-layers {
-            bindings = <
-&trans  &trans    &trans    &trans     &trans  &trans  &trans  &trans  &trans     &trans     &trans  &trans
-&trans  &trans    &kp UP    &trans     &trans  &trans  &trans  &trans  &trans     &trans     &trans  &trans
-&trans  &kp LEFT  &kp DOWN  &kp RIGHT  &trans  &trans  &trans  &trans  &trans     &mkp RCLK  &trans  &trans
-&trans  &trans    &trans    &trans     &trans  &trans  &trans  &trans  &mkp LCLK  &trans     &trans  &trans
-                            &trans     &trans  &trans  &trans  &trans
-                                       &trans  &trans  &trans
+                                          &trans  &to 0   &trans
             >;
         };
 
         snipe-layers {
             bindings = <
+&trans  &trans    &trans    &trans     &trans  &trans  &trans  &trans  &trans     &trans     &trans  &trans
+&trans  &trans    &kp UP    &trans     &trans  &trans  &trans  &trans  &trans     &trans     &trans  &trans
+&trans  &kp LEFT  &kp DOWN  &kp RIGHT  &trans  &trans  &trans  &trans  &trans     &mkp RCLK  &trans  &trans
+&mo 4   &trans    &trans    &trans     &trans  &trans  &trans  &trans  &mkp LCLK  &trans     &trans  &trans
+                            &trans     &trans  &trans  &trans  &trans
+                                       &trans  &to 0   &trans
+            >;
+        };
+
+        scroll-layers {
+            bindings = <
 &trans  &trans    &trans    &trans     &trans  &trans  &trans  &trans  &trans     &trans     &trans     &trans
 &trans  &trans    &kp UP    &trans     &trans  &trans  &trans  &trans  &trans     &trans     &trans     &trans
 &trans  &kp LEFT  &kp DOWN  &kp RIGHT  &trans  &trans  &trans  &trans  &trans     &mkp RCLK  &trans     &trans
-&mo 3   &trans    &trans    &trans     &trans  &trans  &trans  &trans  &mkp LCLK  &trans     &kp QMARK  &trans
+&trans  &trans    &trans    &trans     &trans  &trans  &trans  &trans  &mkp LCLK  &trans     &kp QMARK  &trans
                             &trans     &trans  &trans  &trans  &trans
-                                       &trans  &trans  &trans
+                                       &trans  &to 0   &trans
             >;
         };
     };
